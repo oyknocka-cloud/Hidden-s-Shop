@@ -1,184 +1,200 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Hidden's Store</title>
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
-<style>
-*{box-sizing:border-box;margin:0;padding:0}
-body{background:#0a0505;font-family:'Inter',sans-serif;color:#f0e0e0;min-height:100vh;overflow-x:hidden;position:relative}
-.bg{position:fixed;inset:0;pointer-events:none;overflow:hidden;z-index:0}
-.bg-grid{position:absolute;inset:0;background-image:linear-gradient(rgba(220,30,30,0.05) 1px,transparent 1px),linear-gradient(90deg,rgba(220,30,30,0.05) 1px,transparent 1px);background-size:44px 44px}
-.bg-orb1{position:absolute;width:700px;height:700px;border-radius:50%;background:radial-gradient(circle,rgba(200,20,20,0.12) 0%,transparent 65%);top:-250px;left:50%;transform:translateX(-50%)}
-.bg-orb2{position:absolute;width:350px;height:350px;border-radius:50%;background:radial-gradient(circle,rgba(180,0,0,0.1) 0%,transparent 70%);bottom:-100px;right:-80px}
-.bg-orb3{position:absolute;width:250px;height:250px;border-radius:50%;background:radial-gradient(circle,rgba(200,10,10,0.08) 0%,transparent 70%);bottom:200px;left:-60px}
-.bg-line{position:absolute;top:0;left:50%;width:1px;height:100%;background:linear-gradient(to bottom,transparent,rgba(200,20,20,0.15),transparent);transform:translateX(-50%)}
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Sign In</title>
+  <style>
+    /* Reset & Core App Styles */
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-.nav{position:relative;z-index:20;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;height:64px;border-bottom:1px solid rgba(200,20,20,0.2);background:rgba(10,5,5,0.9);backdrop-filter:blur(16px)}
-.logo{font-family:'Orbitron',monospace;font-size:18px;font-weight:900;letter-spacing:4px;color:#fff;display:flex;align-items:center;gap:10px}
-.logo-icon{width:32px;height:32px;background:#c81414;border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:14px}
-.logo span{color:#c81414}
-.nav-links{display:flex;gap:2rem;font-size:13px;font-weight:500;letter-spacing:1px}
-.nav-links a{color:rgba(240,224,224,0.45);text-decoration:none;transition:color .2s;text-transform:uppercase}
-.nav-links a:hover{color:#e04040}
-.nav-right{display:flex;align-items:center;gap:10px}
-.nav-live{display:flex;align-items:center;gap:6px;font-size:11px;font-weight:600;color:rgba(240,224,224,0.45);letter-spacing:1px;text-transform:uppercase}
-.live-dot{width:7px;height:7px;border-radius:50%;background:#e03030;animation:blink 1.8s infinite}
-@keyframes blink{0%,100%{opacity:1;box-shadow:0 0 0 0 rgba(224,48,48,0.4)}50%{opacity:.5;box-shadow:0 0 0 5px rgba(224,48,48,0)}}
-.nav-btn{background:#c81414;color:#fff;font-family:'Orbitron',monospace;font-size:10px;font-weight:700;letter-spacing:2px;padding:9px 20px;border:none;border-radius:5px;cursor:pointer;text-transform:uppercase}
+    body {
+      background-color: #0d0e12;
+      color: #ffffff;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      min-height: 100vh;
+      padding: 0 24px;
+    }
 
-.hero{position:relative;z-index:10;padding:5rem 2rem 3rem;text-align:center}
-.hero-eyebrow{display:inline-flex;align-items:center;gap:8px;background:rgba(200,20,20,0.1);border:1px solid rgba(200,20,20,0.3);border-radius:100px;padding:6px 18px;font-size:11px;font-weight:600;letter-spacing:2px;color:#e05050;text-transform:uppercase;margin-bottom:2rem}
-.hero-title{font-family:'Orbitron',monospace;font-size:52px;font-weight:900;line-height:1;letter-spacing:2px;color:#fff;margin-bottom:.5rem}
-.hero-title .r{color:#c81414;text-shadow:0 0 40px rgba(200,20,20,0.7),0 0 80px rgba(200,20,20,0.3)}
-.hero-tagline{font-size:15px;color:rgba(240,224,224,0.4);letter-spacing:3px;text-transform:uppercase;margin-bottom:3rem;font-weight:300}
-.hero-stats{display:flex;justify-content:center;gap:3rem;margin-bottom:3rem;flex-wrap:wrap}
-.stat{text-align:center}
-.stat-num{font-family:'Orbitron',monospace;font-size:26px;font-weight:900;color:#c81414}
-.stat-label{font-size:11px;color:rgba(240,224,224,0.35);letter-spacing:2px;text-transform:uppercase;margin-top:2px}
-.hero-btns{display:flex;justify-content:center}
-.btn-red{background:#c81414;color:#fff;font-family:'Orbitron',monospace;font-size:11px;font-weight:700;letter-spacing:2px;padding:15px 36px;border:none;border-radius:6px;cursor:pointer;text-transform:uppercase;position:relative;overflow:hidden}
-.btn-red::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.1) 0%,transparent 50%)}
+    .container {
+      width: 100%;
+      max-width: 400px;
+      margin-top: 20px;
+    }
 
-.trust-bar{position:relative;z-index:10;display:flex;justify-content:center;align-items:center;margin:0 2rem;border:1px solid rgba(200,20,20,0.18);border-radius:10px;background:rgba(255,255,255,0.02);overflow:hidden}
-.trust-item{flex:1;display:flex;align-items:center;justify-content:center;gap:10px;padding:1rem;font-size:12px;font-weight:600;letter-spacing:.5px;color:rgba(240,224,224,0.55);border-right:1px solid rgba(200,20,20,0.12);min-width:0}
-.trust-item:last-child{border-right:none}
-.trust-icon{font-size:18px;flex-shrink:0}
-.trust-text strong{display:block;color:rgba(240,224,224,0.85);font-size:13px;margin-bottom:1px}
+    /* Header Navigation Bar */
+    .header {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+      height: 56px;
+      margin-bottom: 24px;
+    }
 
-.security{position:relative;z-index:10;margin:1.5rem 2rem;background:rgba(200,20,20,0.06);border:1px solid rgba(200,20,20,0.25);border-radius:10px;padding:1rem 1.5rem;display:flex;align-items:center;gap:16px;flex-wrap:wrap}
-.sec-badge{background:#c81414;border-radius:8px;padding:10px;font-size:22px;flex-shrink:0}
-.sec-main{flex:1;min-width:180px}
-.sec-title{font-family:'Orbitron',monospace;font-size:14px;font-weight:700;letter-spacing:2px;color:#e04040;margin-bottom:2px}
-.sec-sub{font-size:12px;color:rgba(240,224,224,0.4);letter-spacing:.5px}
-.sec-pill{background:rgba(200,20,20,0.15);border:1px solid rgba(200,20,20,0.35);border-radius:100px;padding:6px 16px;font-size:10px;font-weight:700;letter-spacing:2px;color:#e05050;text-transform:uppercase;margin-left:auto}
+    .close-btn {
+      position: absolute;
+      left: 0;
+      background: none;
+      border: none;
+      cursor: pointer;
+      padding: 8px 0;
+    }
 
-.pricing{position:relative;z-index:10;padding:2.5rem 2rem 1rem}
-.section-header{text-align:center;margin-bottom:2rem}
-.section-label{font-size:10px;font-weight:700;letter-spacing:4px;color:rgba(200,20,20,0.6);text-transform:uppercase;margin-bottom:.5rem}
-.section-title{font-family:'Orbitron',monospace;font-size:22px;font-weight:900;color:#fff;letter-spacing:2px}
-.base-price{display:flex;justify-content:center;margin-bottom:2rem}
-.bp-card{background:rgba(255,255,255,0.03);border:1px solid rgba(200,20,20,0.3);border-radius:14px;padding:2rem 2.5rem;text-align:center;position:relative;overflow:hidden;max-width:340px;width:100%}
-.bp-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,#c81414,transparent)}
-.bp-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at top,rgba(200,20,20,0.06) 0%,transparent 60%);pointer-events:none}
-.bp-small{font-size:10px;font-weight:700;letter-spacing:3px;color:rgba(200,20,20,0.55);text-transform:uppercase;margin-bottom:6px}
-.bp-price{font-family:'Orbitron',monospace;font-size:50px;font-weight:900;color:#fff}
-.bp-price sup{font-size:24px;vertical-align:top;margin-top:8px;color:#c81414}
-.bp-per{font-size:14px;color:rgba(240,224,224,0.4);letter-spacing:1px;margin-bottom:1.2rem}
-.bp-notes{border-top:1px solid rgba(200,20,20,0.1);padding-top:1rem;display:flex;flex-direction:column;gap:7px}
-.bp-note{font-size:12px;color:rgba(240,224,224,0.45);display:flex;align-items:center;gap:8px;letter-spacing:.3px}
-.bp-note-dot{width:4px;height:4px;border-radius:50%;background:#c81414;flex-shrink:0}
+    .close-btn svg {
+      fill: #ffffff;
+      width: 24px;
+      height: 24px;
+    }
 
-.payments{position:relative;z-index:10;padding:0 2rem 2.5rem}
-.pay-grid{display:flex;justify-content:center;gap:10px;flex-wrap:wrap}
-.pay-card{background:rgba(255,255,255,0.03);border:1px solid rgba(255,255,255,0.08);border-radius:10px;padding:12px 22px;display:flex;align-items:center;gap:10px;font-size:13px;font-weight:600;color:rgba(240,224,224,0.75);letter-spacing:.5px}
-.pay-indicator{width:10px;height:10px;border-radius:50%;flex-shrink:0}
-.ca{background:#00d632}.pp{background:#0070ba}.vm{background:#3d95ce}.ap{background:#e8e8e8}
+    .title {
+      font-size: 20px;
+      font-weight: 700;
+      letter-spacing: -0.3px;
+    }
 
-.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(200,20,20,0.25),transparent);margin:0 2rem 2.5rem}
+    /* Form Layout */
+    .form-group {
+      margin-bottom: 16px;
+    }
 
-.footer{position:relative;z-index:10;border-top:1px solid rgba(200,20,20,0.1);padding:1.8rem 2rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:12px}
-.footer-logo{font-family:'Orbitron',monospace;font-size:13px;font-weight:900;letter-spacing:3px;color:rgba(200,20,20,0.4)}
-.footer-text{font-size:11px;color:rgba(240,224,224,0.2);letter-spacing:.5px}
-.footer-right{font-size:11px;color:rgba(200,20,20,0.35);letter-spacing:1px;font-weight:600}
-</style>
+    label {
+      display: block;
+      font-size: 15px;
+      color: #9da3af;
+      margin-bottom: 10px;
+    }
+
+    /* Inputs and Interactive Elements */
+    .input-field {
+      width: 100%;
+      background-color: #16171d;
+      border: 1px solid #282a34;
+      border-radius: 8px;
+      padding: 16px;
+      color: #ffffff;
+      font-size: 16px;
+      outline: none;
+      transition: border-color 0.2s;
+    }
+
+    .input-field:focus {
+      border-color: #2b4cb1;
+    }
+
+    .primary-btn {
+      width: 100%;
+      background-color: #223e93;
+      color: #9bb1f1;
+      border: none;
+      border-radius: 25px;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      cursor: pointer;
+      margin-top: 8px;
+      transition: background-color 0.2s;
+    }
+
+    /* Note: If the user types text into the input, a real app would likely 
+       brighten this button to #2f5ad8 text color white. */
+    .primary-btn:active {
+      background-color: #2a4bb4;
+    }
+
+    .forgot-link {
+      display: block;
+      text-align: center;
+      color: #9da3af;
+      font-size: 13px;
+      text-decoration: none;
+      margin-top: 24px;
+      font-weight: 500;
+    }
+
+    /* Divider */
+    .divider {
+      text-align: center;
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 700;
+      margin: 28px 0;
+      letter-spacing: 0.5px;
+    }
+
+    /* Secondary Action Buttons */
+    .outline-btn {
+      width: 100%;
+      background-color: transparent;
+      border: 1px solid #ffffff;
+      border-radius: 8px;
+      color: #ffffff;
+      padding: 14px;
+      font-size: 16px;
+      font-weight: 600;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      cursor: pointer;
+      margin-bottom: 12px;
+    }
+
+    .outline-btn svg {
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+    }
+  </style>
 </head>
 <body>
 
-<div class="bg">
-  <div class="bg-grid"></div>
-  <div class="bg-orb1"></div>
-  <div class="bg-orb2"></div>
-  <div class="bg-orb3"></div>
-  <div class="bg-line"></div>
-</div>
+  <div class="container">
+    <header class="header">
+      <button class="close-btn" aria-label="Close">
+        <svg viewBox="0 0 24 24">
+          <path d="M19 6.41L17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/>
+        </svg>
+      </button>
+      <h1 class="title">Sign in</h1>
+    </header>
 
-<nav class="nav">
-  <div class="logo">
-    <div class="logo-icon">H</div>
-    HIDDEN'S<span>STORE</span>
-  </div>
-  <div class="nav-links">
-    <a href="#">Home</a>
-    <a href="#">Packages</a>
-    <a href="#">Deals</a>
-    <a href="#">Support</a>
-  </div>
-  <div class="nav-right">
-    <div class="nav-live"><div class="live-dot"></div>Online</div>
-    <button class="nav-btn" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">Buy Now</button>
-  </div>
-</nav>
-
-<div class="hero">
-  <div class="hero-eyebrow">
-    <div class="live-dot"></div>
-    Only Trusted Seller Is Hidden
-  </div>
-  <div class="hero-title"><span class="r">HIDDEN'S</span><br>STORE</div>
-  <div class="hero-tagline">Safe · Fast · Legit</div>
-  <div class="hero-stats">
-    <div class="stat"><div class="stat-num">$4</div><div class="stat-label">Per 1K Robux</div></div>
-    <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Satisfaction Rate</div></div>
-  </div>
-  <div class="hero-btns">
-    <button class="btn-red" onclick="document.querySelector('.pricing').scrollIntoView({behavior:'smooth'})">Buy Now</button>
-  </div>
-</div>
-
-<div class="trust-bar">
-  <div class="trust-item"><span class="trust-icon">🔒</span><div class="trust-text"><strong>100% Secure</strong>Encrypted orders</div></div>
-  <div class="trust-item"><span class="trust-icon">✅</span><div class="trust-text"><strong>Tax Covered</strong>No hidden fees</div></div>
-</div>
-
-<div class="security">
-  <div class="sec-badge">🕵️</div>
-  <div class="sec-main">
-    <div class="sec-title">ONLY SELLER IS HIDDEN</div>
-    <div class="sec-sub">Your identity &amp; transactions are fully anonymous — zero exposure risk</div>
-  </div>
-  <div class="sec-pill">🛡 Verified Safe</div>
-</div>
-
-<div class="pricing">
-  <div class="section-header">
-    <div class="section-label">Base Pricing</div>
-    <div class="section-title">BEST RATE ON MARKET</div>
-  </div>
-  <div class="base-price">
-    <div class="bp-card">
-      <div class="bp-small">Standard Rate</div>
-      <div class="bp-price"><sup>$</sup>4<span style="font-size:24px;color:rgba(240,224,224,0.3)">.00</span></div>
-      <div class="bp-per">per 1,000 Robux</div>
-      <div class="bp-notes">
-        <div class="bp-note"><div class="bp-note-dot"></div>Bulk discounts available on large orders</div>
-        <div class="bp-note"><div class="bp-note-dot"></div>All purchases are fully tax covered</div>
+    <main>
+      <div class="form-group">
+        <label for="username">Username, email, or phone number</label>
+        <input type="text" id="username" class="input-field" autocomplete="off">
       </div>
-    </div>
-  </div>
-</div>
 
-<div class="payments">
-  <div class="section-header" style="margin-bottom:1rem">
-    <div class="section-label">Payment Methods</div>
-  </div>
-  <div class="pay-grid">
-    <div class="pay-card"><div class="pay-indicator ca"></div>CashApp</div>
-    <div class="pay-card"><div class="pay-indicator pp"></div>PayPal</div>
-    <div class="pay-card"><div class="pay-indicator vm"></div>Venmo</div>
-    <div class="pay-card"><div class="pay-indicator ap"></div>Apple Pay</div>
-  </div>
-</div>
+      <button type="button" class="primary-btn">Next</button>
+      
+      <a href="#" class="forgot-link">Forgot username?</a>
 
-<div class="divider"></div>
+      <div class="divider">OR</div>
 
-<div class="footer">
-  <div class="footer-logo">HIDDEN'S STORE</div>
-  <div class="footer-text">Secure Transactions · Safe · Fast · Legit</div>
-  <div class="footer-right">© 2026 All Rights Reserved</div>
-</div>
+      <button type="button" class="outline-btn">
+        <svg width="20" height="20" viewBox="0 0 24 24">
+          <path d="M21 2l-2 2m-7.61 7.61a5.5 5.5 0 1 1-7.778 7.778 5.5 5.5 0 0 1 7.777-7.777zm0 0L15.5 7.5M14 9l1.5-1.5M16.5 6.5L19 4m-3.5 6.5L17 9" />
+        </svg>
+        Use passkey
+      </button>
+
+      <button type="button" class="outline-btn">
+        <svg width="18" height="18" viewBox="0 0 24 24" stroke-width="2.5">
+          <path d="M3 3h6v6H3V3zm12 0h6v6h-6V3zM3 15h6v6H3v-6zm14 0h2v2h-2v-2zm2 2h2v2h-2v-2zm-2 2h2v2h-2v-2zm2-4h2v2h-2v-2zm-4 4h2v2h-2v-2zm0-4h2v2h-2v-2z" />
+        </svg>
+        Quick sign-in
+      </button>
+    </main>
+  </div>
 
 </body>
 </html>
